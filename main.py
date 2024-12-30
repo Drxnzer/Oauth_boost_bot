@@ -10,7 +10,6 @@ from base64 import b64encode
 import json
 import random
 import string
-from keyauth import api
 import shutil
 from typing import Optional
 from datetime import datetime
@@ -22,11 +21,6 @@ from pystyle import Write, Colors
 import time
 from discord import app_commands, app_commands 
 from datetime import datetime, timezone
-import keyauth
-with open('config.json', 'r') as config_file:
-     config = json.load(config_file)
-
-from keyauth import api
 
 import sys
 import time
@@ -36,52 +30,6 @@ import hashlib
 from time import sleep
 from datetime import datetime
 
-keyauthapp = api(
-    name = "Nitro Redeemer", # App name - VaultCord.com FREE Discord backup bot for members & your entire server saved from terms and nukes!
-    ownerid = "Vd5zW2C06k", # Account ID
-    version = "1.0", # Application version. Used for automatic downloads see video here https://www.youtube.com/watch?v=kW195PLCBKs
-    hash_to_check = "getchecksum()"
-)
-
-license_key = config['license_key']
-
-Write.Print("VERIFYING.", Colors.yellow_to_green, interval=0)
-time.sleep(2)
-print("")
-Write.Print("VERIFYING..", Colors.yellow_to_green, interval=0)
-time.sleep(2)
-print("")
-Write.Print("VERIFYING...", Colors.yellow_to_green, interval=0)
-time.sleep(2)
-print("")
-Write.Print("VERIFYING....", Colors.yellow_to_green, interval=0)
-time.sleep(2)
-print("")
-Write.Print("VERIFYING.....", Colors.yellow_to_green, interval=0)
-time.sleep(2)
-print("")
-
-def check_license(license_key):
-    try:
-        keyauthapp.license(license_key)
-        if keyauthapp.license_key_status:
-            Write.Print("License is invalid!", Colors.red_to_black, interval=0)
-            time.sleep(2)
-            return True
-        else:
-            Write.Print("License is invalid or expired", Colors.red_to_black, interval=0)
-            time.sleep(2)
-            return False
-    except Exception as e:
-        Write.Print("Error checking license: {e}", Colors.red_to_black, interval=0)
-        return False
-
-if check_license(license_key):
-    Write.Print("VERIFIED", Colors.green_to_yellow, interval=0)
-    Write.Print("STARTING.....", Colors.green_to_yellow, interval=0)
-    time.sleep(3)
-else:
-    print("Programm is exiting")
 
 def clear_file(file_path):
     try:
